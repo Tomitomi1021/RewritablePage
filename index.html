@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Rewritable page</title>
+  <script>
+   var editor;
+   var page;
+
+   function init(){
+    editor=document.getElementById("editor");
+    page=document.getElementsByTagName("html")[0];
+    editor.value=page.innerHTML;
+   }
+
+   function change(){
+    let scroll=editor.scrollTop;
+    let selectionStart=editor.selectionStart;
+    let selectionEnd=editor.selectionEnd;
+    let code=editor.value;
+
+    page.innerHTML=editor.value;
+
+    editor=document.getElementById("editor");
+    page=document.getElementsByTagName("html")[0];
+
+    editor.value=code;
+    editor.scrollTop=scroll;
+    editor.selectionStart=selectionStart;
+    editor.selectionEnd=selectionEnd;
+    editor.focus();
+   }
+  </script>
+  <style>
+   #editor{
+    display:block;
+    width:800px;
+    height:800px;
+   }
+  </style>
+ </head>
+ <body onLoad="init();">
+  <textarea id="editor" onKeyUp="change();"></textarea>
+ </body>
+</html>
