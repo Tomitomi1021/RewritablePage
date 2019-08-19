@@ -29,6 +29,14 @@
     editor.selectionStart=selectionStart;
     editor.selectionEnd=selectionEnd;
     editor.focus();
+
+    {
+     let slist=document.getElementsByTagName("script")
+     for(let i=0;i<slist.length;i++){
+      eval(slist[i].innerText);
+     }
+    }
+
    }
   </script>
   <style>
